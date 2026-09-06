@@ -19,5 +19,5 @@
 
 ## Software readiness (separate from claim level)
 
-- Unit tests added Sweep-089 (`test_sierpinski_generator.py`).
-- Workflow `.github/workflows/python-tests.yml` added Sweep-089; first run status is recorded after Actions executes (do not pre-claim green).
+- Unit tests: `test_sierpinski_generator.py` (7 passed locally).
+- GitHub Actions: `.github/workflows/python-tests.yml` run **34063280255** conclusion **success** (head_sha `c8f81089`).
