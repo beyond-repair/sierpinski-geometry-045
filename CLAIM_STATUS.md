@@ -2,7 +2,7 @@
 
 **Classification:** RESEARCH  
 **Claim level (CLAIM_VALIDATION.md):** 1 (mathematical / geometric framework)  
-**Sweep:** 089 (2026-09-06)
+**Sweep:** 114 (2026-09-07) — prior lock Sweep-089
 
 ## Allowed claims
 
@@ -10,14 +10,19 @@
 - Recursion depths `n_aft` / `n_fore` are configurable.
 - Outputs are vertices, faces, optional ASCII STL, optional barycentric surface samples.
 
-## Forbidden / unsupported claims
+## Forbidden / UNSUPPORTED claims
 
-- No electromagnetic field solution.
-- No LDOS, force, thrust, or energy-extraction prediction.
-- Green CI does not raise physics claim level above 1.
-- Downstream repositories (coherence-drive, stress-tensor-modification, ware-constant-phenomenology) are not validated by this mesh generator.
+The following claims are **UNSUPPORTED**:
+
+- UNSUPPORTED: electromagnetic field solution from this generator.
+- UNSUPPORTED: LDOS, force, thrust, or energy-extraction prediction.
+- UNSUPPORTED: raising physics claim level above 1 because CI is green.
+- UNSUPPORTED: validation of coherence-drive, stress-tensor-modification, or ware-constant-phenomenology by this mesh generator.
 
 ## Software readiness (separate from claim level)
 
-- Unit tests: `test_sierpinski_generator.py` (7 passed locally).
-- GitHub Actions: `.github/workflows/python-tests.yml` run **34063280255** conclusion **success** (head_sha `c8f81089`).
+- Unit tests: `test_sierpinski_generator.py`.
+- GitHub Actions: `.github/workflows/python-tests.yml`
+  - run **34063280255** conclusion **success** (head_sha `c8f81089`)
+  - run **34063349923** conclusion **success** (head_sha `bea3705c`)
+- Releases / tags: none (not queued this sweep).

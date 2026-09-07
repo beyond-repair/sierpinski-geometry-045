@@ -8,7 +8,7 @@
 
 </div>
 
-**Classification:** RESEARCH (Sweep-089). Geometry generator only. Claim level 1.
+**Classification:** RESEARCH (Sweep-114). Geometry generator only. Claim level 1.
 
 ---
 
@@ -38,12 +38,13 @@ pytest -q
 - Asymmetric aft/fore recursion depths configurable  
 - **No** field solve, **No** force claim, **No** energy claim
 
-See [CLAIM_STATUS.md](CLAIM_STATUS.md).
+See [CLAIM_STATUS.md](CLAIM_STATUS.md) and [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Tests / CI
 
 - `test_sierpinski_generator.py` — mesh invariants, bounds, STL write, samples.
-- GitHub Actions: `.github/workflows/python-tests.yml` (first run after Sweep-089 push).
+- GitHub Actions: `.github/workflows/python-tests.yml` — runs **34063280255** and **34063349923** conclusion **success**.
+- Sweep-114 first post-lock run: PENDING after this push.
 
 ## Downstream / upstream
 
