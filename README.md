@@ -8,14 +8,16 @@
 
 </div>
 
-**Classification:** RESEARCH (Sweep-114). Geometry generator only. Claim level 1.
+**Classification:** RESEARCH (Sweep-138). Geometry generator + graph symmetry audit. Claim level 1.
 
 ---
 
 ## Why this exists
 
 Field solvers need a mesh. Theory needs a fixed scale ratio.  
-**0.45** is the locked geometric scale factor for asymmetric aft/fore recursive (Sierpinski-type) structure used across the Coherence Drive *research* line.
+**0.45** is the locked **design** scale factor for asymmetric aft/fore recursive (Sierpinski-type) structure used across the Coherence Drive *research* line.
+
+It is **not** a spectral-dimension threshold and it does **not** generate net momentum. That claim was executed and rejected. See [FALSIFICATION.md](FALSIFICATION.md).
 
 ## Why you need it
 
@@ -23,7 +25,8 @@ Field solvers need a mesh. Theory needs a fixed scale ratio.
 |------|-----------|
 | Run BEM / surface integrals | Generate STL / mesh inputs |
 | Quote “0.45 asymmetry” | Share one generator, not hand-waved CAD |
-| Claim thrust from geometry alone | **Don’t** — this repo is shape only |
+| Check gasket \(N\) / \(D_3\) flux | `gasket_flux_audit.py` |
+| Claim thrust from geometry alone | **Don’t** — this repo is shape + algebra only |
 
 ## How it works
 
@@ -31,11 +34,13 @@ Field solvers need a mesh. Theory needs a fixed scale ratio.
 pip install -r requirements.txt
 python sierpinski_generator.py --info --n-aft 3 --n-fore 1
 python sierpinski_generator.py --stl out.stl
+python gasket_flux_audit.py
 pytest -q
 ```
 
-- α = 0.45 exact scale ratio  
+- α = 0.45 exact **design** scale ratio  
 - Asymmetric aft/fore recursion depths configurable  
+- Graph audit: symmetric source ⇒ zero net flux; tilt ⇒ linear diagnostic  
 - **No** field solve, **No** force claim, **No** energy claim
 
 See [CLAIM_STATUS.md](CLAIM_STATUS.md) and [GOVERNANCE.md](GOVERNANCE.md).
@@ -43,8 +48,8 @@ See [CLAIM_STATUS.md](CLAIM_STATUS.md) and [GOVERNANCE.md](GOVERNANCE.md).
 ## Tests / CI
 
 - `test_sierpinski_generator.py` — mesh invariants, bounds, STL write, samples.
-- GitHub Actions: `.github/workflows/python-tests.yml` — runs **34063280255** and **34063349923** conclusion **success**.
-- Sweep-114 first post-lock run: PENDING after this push.
+- `test_gasket_flux_audit.py` — vertex counts, symmetry theorem, α-threshold rejection, tilt linearity.
+- GitHub Actions: `.github/workflows/python-tests.yml`.
 
 ## Downstream / upstream
 
