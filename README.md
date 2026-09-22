@@ -8,7 +8,9 @@
 
 </div>
 
-**Classification:** RESEARCH (Sweep-159). Geometry generator + graph symmetry audit. Claim level 1.
+**Classification:** RESEARCH (Sweep-159e). Geometry generator + graph algebra. Claim level 1.
+
+Lock catalog: [INDEX.md](INDEX.md).
 
 ---
 
@@ -17,7 +19,7 @@
 Field solvers need a mesh. Theory needs a fixed scale ratio.  
 **0.45** is the locked **design** scale factor for asymmetric aft/fore recursive (Sierpinski-type) structure used across the Coherence Drive *research* line.
 
-It is **not** a spectral-dimension threshold and it does **not** generate net momentum. That claim was executed and rejected. See [FALSIFICATION.md](FALSIFICATION.md).
+It is **not** a spectral-dimension threshold and it does **not** generate net momentum. See [FALSIFICATION.md](FALSIFICATION.md).
 
 ## Why you need it
 
@@ -25,39 +27,34 @@ It is **not** a spectral-dimension threshold and it does **not** generate net mo
 |------|-----------|
 | Run BEM / surface integrals | Generate STL / mesh inputs |
 | Quote “0.45 asymmetry” | Share one generator, not hand-waved CAD |
-| Check gasket \(N\) / \(D_3\) flux | `gasket_flux_audit.py` |
+| Check gasket N / D_3 flux | `gasket_flux_audit.py` |
 | Check printed-trace / shear diagnostics | `conductance_shear.py` |
-| Claim thrust from geometry alone | **Don’t** — this repo is shape + algebra only |
+| Quote 3/5, 5/3, 1/5, or tilt growth | [INDEX.md](INDEX.md) |
+| Claim thrust from geometry alone | **Don’t** |
 
 ## How it works
 
 ```bash
 pip install -r requirements.txt
 python sierpinski_generator.py --info --n-aft 3 --n-fore 1
-python sierpinski_generator.py --stl out.stl
 python gasket_flux_audit.py
 python conductance_shear.py
 pytest -q
 ```
 
-- α = 0.45 exact **design** scale ratio  
-- Asymmetric aft/fore recursion depths configurable  
-- Graph audit: symmetric source ⇒ zero net flux; tilt ⇒ linear diagnostic  
-- Sweep-159: constant-section conductance \(G=1/\ell\); rotation-blind; hierarchical buses are a shunt  
-- **No** field solve, **No** force claim, **No** energy claim
-
-See [CLAIM_STATUS.md](CLAIM_STATUS.md), [FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md](FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md), and [GOVERNANCE.md](GOVERNANCE.md).
+Four recurrences live on four problems (energy, resistance, Dirichlet spectrum, unit-load tilt). Do not fuse them.  
+**No** field solve, **No** force claim, **No** energy claim.
 
 ## Tests / CI
 
-- `test_sierpinski_generator.py` — mesh invariants, bounds, STL write, samples.
-- `test_gasket_flux_audit.py` — vertex counts, symmetry theorem, α-threshold rejection, tilt linearity.
-- `test_conductance_shear.py` — conductance lock, combo-blindness, rotation Jacobian, odd/even.
-- GitHub Actions: `.github/workflows/python-tests.yml`.
+- `test_sierpinski_generator.py`
+- `test_gasket_flux_audit.py`
+- `test_conductance_shear.py`
+- GitHub Actions: `.github/workflows/python-tests.yml`
 
 ## Downstream / upstream
 
-- Solvers: [stress-tensor-modification](https://github.com/beyond-repair/stress-tensor-modification)  
-- Index: [coherence-drive](https://github.com/beyond-repair/coherence-drive)  
-- Math: [ware-constant-phenomenology](https://github.com/beyond-repair/ware-constant-phenomenology)
+- Index: [coherence-drive](https://github.com/beyond-repair/coherence-drive)
+- Spectrum consumer: [m2-renormalization-law](https://github.com/beyond-repair/m2-renormalization-law)
+- Solvers: [stress-tensor-modification](https://github.com/beyond-repair/stress-tensor-modification)
 - Governance: [ADL-Governance](https://github.com/beyond-repair/ADL-Governance)

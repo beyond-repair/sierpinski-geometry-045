@@ -1,43 +1,32 @@
 # Claim status — sierpinski-geometry-045
 
 **Classification:** RESEARCH  
-**Claim level (CLAIM_VALIDATION.md):** 1 (mathematical / geometric framework)  
-**Sweep:** 159 (2026-09-21) — prior Sweep-138 (2026-09-15), Sweep-114 (2026-09-07)
+**Claim level:** 1  
+**Sweep:** 159e (2026-09-22)
+
+Catalog: [INDEX.md](INDEX.md).
 
 ## Allowed claims
 
-- This repository generates an asymmetric Sierpinski-type tetrahedral mesh with design scale factor α = 0.45.
-- Recursion depths `n_aft` / `n_fore` are configurable.
-- Outputs are vertices, faces, optional ASCII STL, optional barycentric surface samples.
-- Graph-level audit (`gasket_flux_audit.py`):
-  - gasket vertex counts \(N(2)=15\), \(N(3)=42\);
-  - symmetric Dirichlet data ⇒ net flux at machine zero;
-  - α = 0.45 is not a flux-generating spectral threshold;
-  - small geometric shear with a symmetric interior load produces a flux linear in tilt angle (print-skew diagnostic, not thrust).
-- Sweep-159 conductance / shear audit (`conductance_shear.py`):
-  - constant-section traces use \(G=1/\ell\); Sweep-138 geometric lock remains \(G=1/\ell^2\);
-  - combinatorial / self-similar \(w\propto\ell\) weights are blind to shear under this flux definition;
-  - global trace width on a finest-only gasket does not change \(F\) at fixed vertex load;
-  - rigid rotation and isotropic scale have vanishing Jacobian;
-  - hierarchical buses change \(\|F\|\) by \(O(10\%\text{–}30\%)\), not a new regime.
+- Asymmetric Sierpinski-type tetrahedral mesh with design scale factor α = 0.45.
+- Graph audit (`gasket_flux_audit.py`): N(2)=15, N(3)=42; symmetric load ⇒ flux 0; α=0.45 is not a spectral thrust threshold; small shear ⇒ linear print-skew diagnostic.
+- Conductance / shear (`conductance_shear.py`): γ=1 is 1/ℓ; γ=2 is Sweep-138 1/ℓ²; γ=0 is metric-blind; F∝γ at small θ; rotation and iso-scale Jacobians vanish; buses are a shunt.
+- PCF / Kigami (`KIGAMI_PCF.md`): harmonic energy ratio 3/5; two-corner resistance ratio 5/3 on combinatorial unit edges.
+- Spectrum (`SPECTRUM.md`): λ_max=6 for n≥2; Tr L=6·3^n; mult(λ=6)=3/2(3^{n-1}-1); Dirichlet λ_min ratios → 1/5.
 
-## Forbidden / UNSUPPORTED claims
+## Forbidden / UNSUPPORTED
 
-The following claims are **UNSUPPORTED**:
+- Electromagnetic fields, LDOS-as-force, thrust, energy extraction.
+- α=0.45 as a spectral-dimension critical value or geometric angle.
+- d_s/2 < 1/2 (false).
+- Kigami 3/5 or 5/3 as the tilt-F growth law.
+- K_n=θ/‖F‖_n as a generation-invariant print angle.
+- Measure-normalized tilt limit as proven.
+- mult(λ=6) as topological-pinch η=0.92.
+- Validation of coherence-drive, stress-tensor-modification, or Ware phenomenology by this generator.
+- Raising claim level because CI is green.
 
-- UNSUPPORTED: electromagnetic field solution from this generator.
-- UNSUPPORTED: LDOS, force, thrust, or energy-extraction prediction.
-- UNSUPPORTED: α = 0.45 as a spectral-dimension critical value that generates net boundary momentum.
-- UNSUPPORTED: \(d_s/2 < 1/2\) (false; \(d_s/2 \approx 0.6826\)).
-- UNSUPPORTED: static flux on a static mesh as laboratory thrust.
-- UNSUPPORTED: raising physics claim level above 1 because CI is green.
-- UNSUPPORTED: validation of coherence-drive, stress-tensor-modification, or ware-constant-phenomenology by this mesh generator.
-- UNSUPPORTED: generation-dependent width as a thrust amplifier.
+## Software readiness
 
-See [FALSIFICATION.md](FALSIFICATION.md) and [FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md](FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md).
-
-## Software readiness (separate from claim level)
-
-- Unit tests: `test_sierpinski_generator.py`, `test_gasket_flux_audit.py`, `test_conductance_shear.py`.
-- GitHub Actions: `.github/workflows/python-tests.yml`
-- Releases / tags: none (not queued this sweep).
+Tests: `test_sierpinski_generator.py`, `test_gasket_flux_audit.py`, `test_conductance_shear.py`.  
+Releases / tags: none.
