@@ -19,7 +19,7 @@ Reproduction:
 
 ```bash
 python3 gasket_flux_audit.py
-pytest -q test_gasket_flux_audit.py test_sierpinski_generator.py
+pytest -q test_gasket_flux_audit.py test_sierpinski_generator.py test_conductance_shear.py
 ```
 
 ## 2. Locked graph facts (deterministic)
@@ -111,6 +111,7 @@ Schwarzschild–Ware / Coherence Drive propulsion claims remain **UNSUPPORTED** 
 - Promote \(\|F\|\sim 10^{-3}\) at \(0.45^\circ\) tilt to laboratory thrust.
 - Use \(d_s/2 < 1/2\) as a written inequality.
 - Raise claim level because CI is green.
+- Fit hierarchical process ratio \(r\) or width exponent \(\beta\) after observing \(\|F\|\).
 
 ## 7. Allowed next derivation
 
@@ -119,3 +120,16 @@ Only these elevate a *geometry* claim, and none of them become a force claim wit
 1. Level-4 / level-5 tilt sensitivity with edge-length-weighted Laplacians (resistor/capacitor print analogue).
 2. Finite-size crossover of any log-periodic observable — still not thrust.
 3. Keep \(\alpha = 0.45\) as the **design scale factor** of `generate_asymmetric_sierpinski`.
+
+Item 1 was executed as Sweep-159. Results live in [FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md](FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md) and `conductance_shear.py`. They remain diagnostics.
+
+## 8. Sweep-159 addendum (2026-09-21)
+
+Does not reopen Sweep-138. Records executed conductance / shear facts.
+
+- Constant-section printed traces: \(G=1/\ell\). Level-2 gain \(\|F\|/\theta_{\rm rad}=0.46764\) (half the geometric-weight lock, characteristic \(\langle 1/\ell\rangle\sim 2\)).
+- Combinatorial and self-similar \(w\propto\ell\) weights: \(F=0\) under symmetric load + shear.
+- Global width on a finest-only gasket: \(F\) invariant at fixed vertex load.
+- Rigid rotation and isotropic scale: Jacobian vanishes.
+- Hierarchical buses: \(O(10\%\text{–}30\%)\) correction; generation-0 outer sides carry zero current; dropping the finest layer singularizes \(L_{\rm int}\).
+- Linear window: four-digit \(F\propto\theta\) through \(\sim 2^\circ\). \(0.45^\circ\) is inside that window and is not a peak.
