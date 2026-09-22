@@ -2,7 +2,7 @@
 
 **Governing source:** [ADL-Governance](https://github.com/beyond-repair/ADL-Governance)
 **Classification:** RESEARCH
-**Sweep:** 138 (2026-09-15)
+**Sweep:** 159 (2026-09-21); prior 138 (2026-09-15)
 **Claim level:** 1 (geometry / software invariants only)
 
 ## Invariants
@@ -13,6 +13,7 @@
 - Geometric-tilt flux is a **diagnostic** of broken embedding symmetry. It SHALL NOT be scaled into thrust.
 - Green CI validates generator tests and the flux-audit locks only.
 - Promotion to ACTIVE requires SECURITY.md plus an operator decision; not granted this sweep.
+- Stage-1 freeze in coherence-drive SHALL NOT be edited from this satellite.
 
 ## Allowed mutations
 
