@@ -1,38 +1,19 @@
 # Lock catalog — sierpinski-geometry-045
 
-**Sweep:** 159e (2026-09-22)  
+**Sweep:** 159g (2026-09-22)  
 **Claim level:** 1  
-**Not thrust. Not LDOS. Not Stage 2.**
-
-Read in this order.
+**Not thrust. Not LDOS-as-force. Not Stage 2.**
 
 | File | What it locks |
 |------|----------------|
 | [CLAIM_STATUS.md](CLAIM_STATUS.md) | Allowed / forbidden claims |
-| [FALSIFICATION.md](FALSIFICATION.md) | α=0.45 is not a flux threshold; tilt is linear |
+| [FALSIFICATION.md](FALSIFICATION.md) | α=0.45 is not a flux threshold |
 | [ZERO_POINT_FOUR_FIVE.md](ZERO_POINT_FOUR_FIVE.md) | Three different 0.45s |
-| [FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md](FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md) | γ=1 vs γ=2, buses, shear Jacobian |
-| [REVIEW_2026-09-21_TILT_WRITEUP.md](REVIEW_2026-09-21_TILT_WRITEUP.md) | F∝γ accepted; Kigami-as-F and K_n rejected |
+| [FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md](FINDINGS_2026-09-21_CONDUCTANCE_SHEAR.md) | γ-linear tilt diagnostic |
 | [KIGAMI_PCF.md](KIGAMI_PCF.md) | Energy 3/5, resistance 5/3 |
-| [SPECTRUM.md](SPECTRUM.md) | λ_max=6, mult(6), Dirichlet λ_min → 1/5 |
-| [CONFORMANCE_2026-09-21.md](CONFORMANCE_2026-09-21.md) | Problem split accepted; measure-tilt limit unproven |
+| [KIGAMI_LAPLACIAN.md](KIGAMI_LAPLACIAN.md) | \((5/3)^n\mathcal{E}\equiv 1\); \(5^n\lambda_{\min}^D\to\approx 11.21\) |
+| [SPECTRUM.md](SPECTRUM.md) | λ_max=6, mult(6), raw λ_min → 1/5 |
+| [CONFORMANCE_2026-09-21.md](CONFORMANCE_2026-09-21.md) | Problem split |
 | [GOVERNANCE.md](GOVERNANCE.md) | Mutation policy |
 
-## Four recurrences (do not fuse)
-
-| Object | Factor |
-|--------|--------|
-| Harmonic energy Ē_n | 3/5 |
-| Two-corner resistance R_n | 5/3 |
-| Dirichlet λ_min of raw L_n | → 1/5 |
-| Unit-load tilt ‖F‖ | 2.80, 2.57, 2.48 (n=2	o5) |
-
-## Reproduction
-
-```bash
-python3 gasket_flux_audit.py
-python3 conductance_shear.py
-pytest -q
-```
-
-Index of the chain: [coherence-drive PORTFOLIO_MATH](https://github.com/beyond-repair/coherence-drive/blob/main/docs/PORTFOLIO_MATH_2026-09-21.md).
+Four recurrences stay four problems. The Kigami Laplacian is the energy/measure pair, not tilt \(F\).
