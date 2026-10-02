@@ -47,3 +47,19 @@ def test_quick_report_discloses_dsi_and_not_thrust():
     assert "vertices=48 faces=36" in text
     assert "not a maximum" in text
     assert "generation ratios are not 5/3" in text
+
+
+def test_level6_ground_and_log_periodic_miss():
+    """Headline n=6 lock. Not 0.08. Pre-registered DSI windows fail."""
+    d6 = dirichlet_ground(6)
+    assert d6["dim"] == 1092
+    assert abs(d6["scaled"] - 11.210263758146393) < 1e-5
+    assert abs(d6["scaled"] - 0.08) > 1.0
+    row = log_periodic(6, 0.003, 0.075)
+    assert row["passes"] is False
+    assert row["periods"] == 2.0
+    assert abs(row["slope"] - (-0.8366667679808816)) < 1e-4
+    assert row["rel_miss"] > 0.20
+    short = log_periodic(6, 0.003, 0.015)
+    assert short["periods"] == 1.0
+    assert short["passes"] is False
