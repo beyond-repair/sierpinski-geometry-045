@@ -187,6 +187,7 @@ def main():
     parser.add_argument("--stl", type=str, default="", help="output STL path (optional)")
     parser.add_argument("--samples", type=int, default=0, help="if >0, also write surface sample points")
     parser.add_argument("--info", action="store_true", help="print mesh statistics")
+    parser.add_argument("--no-save", action="store_true", help="do not write sierpinski045_mesh.npz")
     args = parser.parse_args()
 
     V, F = generate_asymmetric_sierpinski(
@@ -217,9 +218,10 @@ def main():
         np.save("surface_samples.npy", pts)
         print(f"Wrote {len(pts)} surface samples → surface_samples.npy")
 
-    # Always save the raw mesh for downstream use
-    np.savez("sierpinski045_mesh.npz", vertices=V, faces=F)
-    print("Wrote mesh → sierpinski045_mesh.npz")
+    print("Geometry only. Not thrust, not LDOS, not a field solve.")
+    if not args.no_save:
+        np.savez("sierpinski045_mesh.npz", vertices=V, faces=F)
+        print("Wrote mesh → sierpinski045_mesh.npz")
 
 
 if __name__ == "__main__":

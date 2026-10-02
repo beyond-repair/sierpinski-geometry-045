@@ -19,7 +19,8 @@ Reproduction:
 
 ```bash
 python3 gasket_flux_audit.py
-pytest -q test_gasket_flux_audit.py test_sierpinski_generator.py test_conductance_shear.py
+python3 gasket_catalog.py --quick
+pytest -q test_gasket_flux_audit.py test_sierpinski_generator.py test_conductance_shear.py test_gasket_catalog.py
 ```
 
 ## 2. Locked graph facts (deterministic)

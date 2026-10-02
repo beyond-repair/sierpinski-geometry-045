@@ -62,3 +62,9 @@ def test_surface_samples_shape():
     pts = surface_sample_points(V, F, n_per_face=2)
     assert pts.ndim == 2 and pts.shape[1] == 3
     assert len(pts) == len(F) * 6  # bary grid for n=2: 6 points
+
+
+def test_face_count_omits_center():
+    # Each face keeps three corner children and drops the middle triangle.
+    _V, F = generate_asymmetric_sierpinski(n_aft=3, n_fore=1)
+    assert len(F) == 3**3 + 3 * (3**1)

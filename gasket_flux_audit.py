@@ -127,11 +127,54 @@ def odd_even_force(level: int, tilt_deg: float):
     return 0.5 * (fp - fm), 0.5 * (fp + fm)
 
 
+def alpha_sweep(level: int = 2, bc=None, alphas=None) -> dict:
+    """||F|| of combinatorial L^alpha under fixed Dirichlet data. Not momentum."""
+    if bc is None:
+        bc = np.array([1.0, -0.5, 0.0])
+    if alphas is None:
+        alphas = (0.25, 0.45, 0.6826, 1.0, 2.0)
+    P, E, C = build_gasket(level)
+    L = laplacian(len(P), E)
+    out = {}
+    for a in alphas:
+        A = fractional_laplacian(L, a)
+        u = dirichlet_solve(A, C, bc)
+        out[float(a)] = float(np.linalg.norm(net_flux(P, E, u, C)))
+    return out
+
+
+def symmetric_flux(level: int = 2, alpha: float = 0.45) -> float:
+    P, E, C = build_gasket(level)
+    L = laplacian(len(P), E)
+    A = fractional_laplacian(L, alpha)
+    u = dirichlet_solve(A, C, np.array([1.0, 1.0, 1.0]))
+    return float(np.linalg.norm(net_flux(P, E, u, C)))
+
+
+def tilt_norm(level: int, tilt_deg: float) -> float:
+    return float(np.linalg.norm(force_from_tilt(level, tilt_deg)))
+
+
 def run() -> None:
+    print("Graph flux audit. Not a field solver. Not thrust.")
     print("=== vertex counts ===")
     for lv in range(0, 5):
         P, E, C = build_gasket(lv)
-        print(f"level {lv}: N={len(P)} E={len(E)} corners={list(C)}")
+        print(f"level {lv}: N={len(P)} E={len(E)} corners={list(map(int, C))}")
+    sym = symmetric_flux()
+    print(f"=== symmetric Dirichlet ||F|| at alpha=0.45 level 2: {sym:.6e} ===")
+    print("=== asymmetric Dirichlet ||F|| vs alpha, level 2, bc=(1,-0.5,0) ===")
+    sweep = alpha_sweep()
+    for a, nrm in sweep.items():
+        mark = "  <-- not a maximum" if abs(a - 0.45) < 1e-12 else ""
+        print(f"alpha {a:.4f} ||F||={nrm:.6f}{mark}")
+    print("=== geometric-weight tilt ||F||, level 2 ===")
+    for th in (0.0, 0.10, 0.45, 1.0, 2.0, 5.0):
+        nrm = tilt_norm(2, th)
+        gain = nrm / math.radians(th) if th else float("nan")
+        print(f"theta {th:.2f} deg ||F||={nrm:.6e} ||F||/theta_rad={gain:.6f}")
+    print("0.45 deg is one point on a line through the origin, not a threshold.")
+    print("NOT THRUST")
 
 
 if __name__ == "__main__":
