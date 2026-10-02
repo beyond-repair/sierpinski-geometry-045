@@ -19,6 +19,19 @@ Laplacian vs \(\mu(\mathrm{cell})=3^{-n}\): \(5^n L_n\).
 
 \((5/3)^n\mathcal{E}_n^{\rm comb}=1\) exactly at \(n=1\ldots 5\) in this convention. Ratio \(3/5\) exact in float.
 
+
+## Runnable check
+
+`python gasket_catalog.py` evaluates the edge sum
+
+$$
+E_n=\sum_{E_n}(u_i-u_j)^2=u^\top L_n u=2\,(3/5)^n
+$$
+
+on boundary data `(1,0,0)`. Then `(5/3)^n E_n` prints **2**, not 1. The formula line in §1 that writes this sum as `½ u^T L u` is off by that factor of two. `(5/3)^n (E_n/2)` prints 1, which is the half-energy reading.
+
+`5^6 λ_min^D` prints **11.210264**, not 0.08. The n=5 raw ratio is **0.200144**, not exactly 1/5.
+
 ## 3. Dirichlet spectral lock
 
 | \(n\) | \(N\) | \(5^n\lambda_{\min}^D\) | raw \(\lambda_{\min}\) ratio |

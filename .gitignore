@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+sierpinski045_mesh.npz
+surface_samples.npy
+*.stl
+*.egg-info/
+.pytest_cache/
+dist/
+build/

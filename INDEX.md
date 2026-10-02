@@ -15,5 +15,6 @@
 | [SPECTRUM.md](SPECTRUM.md) | λ_max=6, mult(6), raw λ_min → 1/5 |
 | [CONFORMANCE_2026-09-21.md](CONFORMANCE_2026-09-21.md) | Problem split |
 | [GOVERNANCE.md](GOVERNANCE.md) | Mutation policy |
+| `gasket_catalog.py` | Prints the locks above. Does not refit 0.45, 0.08, or 0.92 |
 
 Four recurrences stay four problems. The Kigami Laplacian is the energy/measure pair, not tilt \(F\).

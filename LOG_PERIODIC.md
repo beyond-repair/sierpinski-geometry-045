@@ -17,6 +17,9 @@ $$
 
 ## 2. Pre-registered n=6 test
 
+Reproduction: `python gasket_catalog.py` (level 6 included; `--quick` stops at level 5). Least-squares slopes of `log Z` versus `log τ` on 48 geometric samples match the table below to the printed digits. The test still fails. Slopes were not refit.
+
+
 Criteria fixed before the run: (i) slope within a few percent of \(-d_s/2\approx -0.683\); (ii) at least two periods of \(\log 5\); (iii) no fit to \(0.08\).
 
 Level 6: \(N=1095\), \(N_{\rm int}=1092\), \(\lambda_{\max}(L^D)=6\),

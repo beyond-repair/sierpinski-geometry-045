@@ -11,7 +11,7 @@
 - This repository SHALL NOT claim electromagnetic fields, thrust, energy extraction, or LDOS.
 - Graph-level net flux under asymmetric Dirichlet data SHALL NOT be described as generated momentum.
 - Geometric-tilt flux is a **diagnostic** of broken embedding symmetry. It SHALL NOT be scaled into thrust.
-- Green CI validates generator tests and the flux-audit locks only.
+- Green CI validates generator tests, flux-audit locks, and `gasket_catalog.py`. A green run does not raise the claim level.
 - Promotion to ACTIVE requires SECURITY.md plus an operator decision; not granted this sweep.
 - Stage-1 freeze in coherence-drive SHALL NOT be edited from this satellite.
 
